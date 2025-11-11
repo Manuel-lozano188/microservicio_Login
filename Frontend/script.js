@@ -1,0 +1,25 @@
+document.getElementById("login-form").addEventListener("submit", async (e) => {
+  e.preventDefault();
+
+  const email = document.getElementById('email').value;
+  const password = document.getElementById('password').value;
+
+  const data = { email, password };
+
+  try {
+    const response = await fetch('https://localhost:8080/api/usuarios/login', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(data)
+    });
+
+
+    const result = await response.json();
+    localStorage.setItem('token', result.token);
+    console.log(result);
+  } catch (error) {
+    console.error('Error al iniciar sesión:', error);
+  }
+});
