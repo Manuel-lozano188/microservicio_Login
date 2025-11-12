@@ -45,7 +45,7 @@ const form = document.getElementById('register-form');
         valid = false;
       }
 
-      if (confirm.value !== password.value) {
+      if (confirmarPassword.value !== password.value) {
         confirmErr.textContent = 'Las contraseñas no coinciden.';
         valid = false;
       }

@@ -7,7 +7,7 @@ document.getElementById("login-form").addEventListener("submit", async (e) => {
   const data = { email, password };
 
   try {
-    const response = await fetch('https://localhost:8080/api/usuarios/login', {
+    const response = await fetch('http://localhost:8080/api/usuarios/login', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -18,8 +18,11 @@ document.getElementById("login-form").addEventListener("submit", async (e) => {
 
     const result = await response.json();
     localStorage.setItem('token', result.token);
-    console.log(result);
+    alert('Inicio de sesión exitoso.');
+    if (response.ok) {
+      window.location.href = "http://localhost:3000/opcion1/";
+    }
   } catch (error) {
-    console.error('Error al iniciar sesión:', error);
+    alert('Error en el inicio de sesión. Por favor, inténtalo de nuevo.');
   }
 });
